@@ -45,9 +45,12 @@ int estadia_reservarUna(eEstadia *arrEstadia, int _tam, ePerro *_arrPerro, int _
 void estadia_mostrarUna(eEstadia _est, ePerro *_arrPerro, int _tamPerro, int _tamChars);
 int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro, int _tamCharsPerro);
 int estadia_buscarDesdeId(eEstadia *_arrEstadia, int _tam, int _id);
+int estadia_cancelarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro, int _tamCharsPerro);
+
 int perro_obtenerId(ePerro *_arrPerro, int _tamPerro);
 int perro_obtenerCantidad(ePerro *_arrPerro, int _tamPerro);
 int perro_obtenerNombre(ePerro *_arrPerro, int _tamPerro, int idPerro, char *_nombrePerro);
+
 eFecha pedirFecha(char *_msj);
 
 #endif /* FUNCIONES_H_ */

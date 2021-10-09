@@ -65,35 +65,40 @@ int estadia_reservarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int 
 			printLine("RESERVAR ESTADIA");
 			_arrEstadia[index].id=nuevoId;
 
-			getString(_arrEstadia[index].nombreDuenio, "Ingrese nombre del/a dueño/a: ", "Descripcion invalida, hasta 50 caracteres, reingrese: ", _tamCharsDuenio);
-			_arrEstadia[index].telefonoContacto=getInt("Ingrese su numero de telefono (8 digitos): ", "Ingrese un numero de telefono valido (8 digitos): ", 9999999, 99999999);
-			_arrEstadia[index].idPerro=perro_obtenerId(_arrPerro, _tamPerro);
-			_arrEstadia[index].fecha=pedirFecha("INGRESAR FECHA");
+				getName(_arrEstadia[index].nombreDuenio,
+						"Ingrese nombre del/a dueño/a: ",
+						"El nombre no debe superar los 50 caracteres\n",
+						"El nombre no debe tener caracteres especiales\n",
+						"El nombre no puede estar vacío\n",
+						_tamCharsDuenio);
+				_arrEstadia[index].telefonoContacto=getInt("Ingrese su numero de telefono (8 digitos): ", "Ingrese un numero de telefono valido (8 digitos): ", 9999999, 99999999);
+				_arrEstadia[index].idPerro=perro_obtenerId(_arrPerro, _tamPerro);
+				_arrEstadia[index].fecha=pedirFecha("INGRESAR FECHA");
 
-			printLine("");
-			if(_arrEstadia[index].idPerro!=-1)
-			{
-				printf("ESTADIA A RESERVAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
-				estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
 				printLine("");
+				if(_arrEstadia[index].idPerro!=-1)
+				{
+					printf("ESTADIA A RESERVAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
+					estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
+					printLine("");
 
-				if(verify("\nIngrese 's' para confirmar la reserva: ")==0)
-				{
-					_arrEstadia[index].estado=1;
-					nuevoId++;
-					*_id=nuevoId;
-					printf("\nSe dio de alta la reserva!");
-					printLine("");
-					return 0;
-				}
-				else
-				{
-					printf("\nSe canceló el alta de la reserva...");
-					printLine("");
+					if(verify("\nConfirmar reserva? Ingrese 's': ")==0)
+					{
+						_arrEstadia[index].estado=1;
+						nuevoId++;
+						*_id=nuevoId;
+						printf("\nSe dio de alta la reserva!");
+						printLine("");
+						return 0;
+					}
+					else
+					{
+						printf("\nSe canceló el alta de la reserva...");
+						printLine("");
+					}
 				}
 			}
 		}
-	}
 	return -1;
 }
 
@@ -145,7 +150,7 @@ int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPer
 					case 1:
 						printf("\nESTADIA A MODIFICAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
 						estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
-						auxEstadia.telefonoContacto=getInt("Ingrese su numero de telefono (8 digitos): ", "Ingrese un numero de telefono valido (8 digitos): ", 9999999, 99999999);
+						auxEstadia.telefonoContacto=getInt("\nIngrese su numero de telefono (8 digitos): ", "Ingrese un numero de telefono valido (8 digitos): ", 9999999, 99999999);
 
 						printf("\nCONTACTO MODIFICADO:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
 						estadia_mostrarUna(auxEstadia, _arrPerro, _tamPerro, _tamCharsPerro);
@@ -223,6 +228,27 @@ int estadia_buscarDesdeId(eEstadia *_arrEstadia, int _tam, int _id)
 		}
 	}
 	return index;
+}
+
+int estadia_cancelarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro, int _tamCharsPerro)
+{
+	int index=-1;
+	int idIngresado=getInt("Ingrese ID a cancelar: ", "Error. Reingrese ID a cancelar", 10000, 19999);
+
+	index=estadia_buscarDesdeId(_arrEstadia, _tam, idIngresado);
+
+	if(_arrEstadia!=NULL && index!=-1)
+	{
+		printf("\nESTADIA A CANCELAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
+		estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
+		if (verify("Confirmar baja? Ingrese 's': ")==0)
+		{
+			_arrEstadia[index].estado=0;
+			printf("Estadia dada de baja correctamente! (ID: %d)", _arrEstadia[index].id);
+			return 0;
+		}
+	}
+	return -1;
 }
 
 int perro_obtenerId(ePerro *_arrPerro, int _tamPerro)

@@ -61,14 +61,25 @@ int main(void) {
 			case 2:
 				if(cantidadEstadias>0)
 				{
-					if(estadia_subMenuModificarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, TAMNOMBREPERRO)==-1)
-					{
-						printf("\nNo se pudo modificar la estadía...\n");
-					}
+					estadia_subMenuModificarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, TAMNOMBREPERRO);
 				}
 				else
 				{
 					printf("\nNo hay estadías para modificar...\n");
+				}
+				system("pause");
+			break;
+			case 3:
+				if(cantidadEstadias>0)
+				{
+					if (estadia_cancelarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, TAMNOMBREPERRO)==0)
+					{
+						cantidadEstadias--;
+					}
+				}
+				else
+				{
+					printf("\nNo hay estadías para cancelar...\n");
 				}
 				system("pause");
 			break;

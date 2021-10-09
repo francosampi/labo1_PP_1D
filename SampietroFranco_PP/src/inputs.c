@@ -19,7 +19,8 @@
  * @param _errMsg the message that will show up if there was an error with the input
  * @param _max the limit of characters that the array can store
  */
-void getString(char *_str, char *_msg, char *_errMsg, int _max)
+/*
+int getString(char *_str, char *_msg, char *_errMsg)
 {
 	char str[200];
 	int len;
@@ -29,14 +30,90 @@ void getString(char *_str, char *_msg, char *_errMsg, int _max)
 	scanf("%[^\n]", str);
 	len = strlen(str);
 
-	while(len>_max)
+	while(len>_max || strValidado==0)
 	{
 		printf("%s", _errMsg);
 		fflush(stdin);
 		scanf("%[^\n]", str);
 		len = strlen(str);
+		return 0;
 	}
-	strcpy(_str, str);
+	return -1;
+}
+*/
+
+int getString(char *_str, char *_msg, char *_errMsg, int _strMaxLen)
+{
+	char str[200];
+	int len;
+
+	if(_str!=NULL)
+	{
+		printf("%s", _msg);
+		fflush(stdin);
+		scanf("%[^\n]", str);
+		len = strlen(str);
+
+		if(len>_strMaxLen)
+		{
+			printf(_errMsg);
+			return -1;
+		}
+		strcpy(_str, str);
+		return 0;
+	}
+	return -1;
+}
+
+int isLetter(char *_str, char *_errMsg)
+{
+    int i=0;
+    while(_str[i]!='\0')
+    {
+        if((_str[i]!=' ') && (_str[i]<'a'||_str[i]>'z') && (_str[i]<'A'||_str[i]>'Z'))
+        {
+        	printf("%s", _errMsg);
+            return -1;
+        }
+        i++;
+    }
+    return 0;
+}
+
+int isNotBlank(char *_str, char *_errMsg)
+{
+	int flagNotBlank=0;
+    int i=0;
+    while(_str[i]!='\0')
+    {
+        if(_str[i]!=' ')
+        {
+        	flagNotBlank=1;
+        }
+        i++;
+    }
+    if (flagNotBlank==1)
+    {
+    	return 0;
+    }
+    printf("%s", _errMsg);
+    return -1;
+}
+
+int getName(char *_str, char *_msg, char *_errMsgOnLen, char *_errMsgNotLetter, char *_errMsgIsBlank, int _strMaxLen)
+{
+	char str[_strMaxLen];
+
+	if(_str!=NULL)
+	{
+		if(getString(str, _msg, _errMsgOnLen, _strMaxLen)==0 && isLetter(str, _errMsgNotLetter)==0 && isNotBlank(str, _errMsgIsBlank)==0)
+		{
+			strcpy(_str, str);
+			return 0;
+		}
+	}
+	getName(_str, _msg, _errMsgOnLen, _errMsgNotLetter, _errMsgIsBlank, _strMaxLen);
+	return -1;
 }
 
 /**
