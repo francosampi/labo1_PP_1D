@@ -11,37 +11,15 @@
 #include "inputs.h"
 
 /**
- * @fn void getString(char*, char*, char*, int)
- * @brief this ask the user to enter an array of characters and validates it
+ * @fn int getString(char*, char*, char*, int)
+ * @brief
  *
- * @param _str where the array will be stored
+ * @param _str pointer to string
  * @param _msg the message that will show up
- * @param _errMsg the message that will show up if there was an error with the input
- * @param _max the limit of characters that the array can store
+ * @param _errMsg the message that will show up if the string is too long
+ * @param _strMaxLen length that the string cant surpass
+ * @return (-1) if error (character variable is null or if string too long) - (0) if ok
  */
-/*
-int getString(char *_str, char *_msg, char *_errMsg)
-{
-	char str[200];
-	int len;
-
-	printf("%s", _msg);
-	fflush(stdin);
-	scanf("%[^\n]", str);
-	len = strlen(str);
-
-	while(len>_max || strValidado==0)
-	{
-		printf("%s", _errMsg);
-		fflush(stdin);
-		scanf("%[^\n]", str);
-		len = strlen(str);
-		return 0;
-	}
-	return -1;
-}
-*/
-
 int getString(char *_str, char *_msg, char *_errMsg, int _strMaxLen)
 {
 	char str[200];
@@ -65,41 +43,77 @@ int getString(char *_str, char *_msg, char *_errMsg, int _strMaxLen)
 	return -1;
 }
 
+/**
+ * @fn int isLetter(char*, char*)
+ * @brief this validates if a string has only letters as characters
+ *
+ * @param _str pointer to string
+ * @param _errMsg the message that will show up if the string has special characters
+ * @return (-1) if error (character variable is null or if there is a special character on string) - (0) if ok
+ */
 int isLetter(char *_str, char *_errMsg)
 {
     int i=0;
-    while(_str[i]!='\0')
+
+    if(_str!=NULL)
     {
-        if((_str[i]!=' ') && (_str[i]<'a'||_str[i]>'z') && (_str[i]<'A'||_str[i]>'Z'))
-        {
-        	printf("%s", _errMsg);
-            return -1;
-        }
-        i++;
+		while(_str[i]!='\0')
+		{
+			if((_str[i]!=' ') && (_str[i]<'a'||_str[i]>'z') && (_str[i]<'A'||_str[i]>'Z'))
+			{
+				printf("%s", _errMsg);
+				return -1;
+			}
+			i++;
+		}
     }
     return 0;
 }
 
+/**
+ * @fn int isNotBlank(char*, char*)
+ * @brief this validates if a string has characters and is not blank
+ *
+ * @param _str pointer to string
+ * @param _errMsg the message that will show up if the string is empty
+ * @return (-1) if error (character variable is null or string is empty) - (0) if ok
+ */
 int isNotBlank(char *_str, char *_errMsg)
 {
 	int flagNotBlank=0;
     int i=0;
-    while(_str[i]!='\0')
+
+    if(_str!=NULL)
     {
-        if(_str[i]!=' ')
+        while(_str[i]!='\0')
         {
-        	flagNotBlank=1;
+            if(_str[i]!=' ')
+            {
+            	flagNotBlank=1;
+            }
+            i++;
         }
-        i++;
-    }
-    if (flagNotBlank==1)
-    {
-    	return 0;
+        if (flagNotBlank==1)
+        {
+        	return 0;
+        }
     }
     printf("%s", _errMsg);
     return -1;
 }
 
+/**
+ * @fn int getName(char*, char*, char*, char*, char*, int)
+ * @brief this will get a string and validates if it has correct length, is not empty and it has only letters
+ *
+ * @param _str pointer to string
+ * @param _msg the message that will show up
+ * @param _errMsgOnLen the message that will show up if there was an error with the length
+ * @param _errMsgNotLetter the message that will show up if there was an error with the characters
+ * @param _errMsgIsBlank the message that will show up if there was an empty string
+ * @param _strMaxLen the maximum length of the string
+ * @return (-1) if error (character variable is null or something is wrongly validated) - (0) if ok
+ */
 int getName(char *_str, char *_msg, char *_errMsgOnLen, char *_errMsgNotLetter, char *_errMsgIsBlank, int _strMaxLen)
 {
 	char str[_strMaxLen];

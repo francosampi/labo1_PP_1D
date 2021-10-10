@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "funciones.h"
+#include "nexo.h"
 
 #define TAMESTADIA 1000
 #define TAMPERRO 200
@@ -38,7 +38,8 @@ int main(void) {
 					  "3. CANCELAR ESTADIA\n"
 					  "4. LISTAR ESTADIAS\n"
 					  "5. LISTAR PERROS\n"
-					  "6. SALIR\n"
+					  "6. PROMEDIO DE EDAD DE PERROS\n"
+					  "7. SALIR\n"
 					  "----------------------------\n"
 					  "Ingrese una opcion (1-6): ",
 					  "1. RESERVAR ESTADIA\n"
@@ -46,9 +47,10 @@ int main(void) {
 					  "3. CANCELAR ESTADIA\n"
 					  "4. LISTAR ESTADIAS\n"
 					  "5. LISTAR PERROS\n"
-					  "6. SALIR\n"
+					  "6. PROMEDIO DE EDAD DE PERROS\n"
+					  "7. SALIR\n"
 					  "----------------------------\n"
-				      "Opcion invalida, reingrese (1-6): ", 1, 6);
+				      "Opcion invalida, reingrese (1-7): ", 1, 7);
 		switch(opcion)
 		{
 			case 1:
@@ -83,18 +85,46 @@ int main(void) {
 				}
 				system("pause");
 			break;
+			case 4:
+				if(cantidadEstadias>0)
+				{
+					estadia_ordenarTodas(arrEstadia, TAMESTADIA, TAMNOMBRE);
+					estadia_mostrarTodas(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, TAMNOMBREPERRO);
+				}
+				else
+				{
+					printf("\nNo hay estadías para listar...\n");
+				}
+				system("pause");
+			break;
+			case 5:
+				if (perro_obtenerCantidad(arrPerro, TAMPERRO)>0)
+				{
+					perro_mostrarTodos(arrPerro, TAMPERRO);
+				}
+				else
+				{
+					printf("\nNo hay perritos para listar...\n");
+				}
+				system("pause");
+			break;
 			case 6:
+				perro_promedioEdad(arrPerro, TAMPERRO);
+				system("pause");
+			break;
+			case 7:
 				printLine("SALIENDO DEL PROGRAMA");
 				printf("         ||_/|\n"
-					   "	 | @ @   Woof! Vuelva pronto...\n"
-					   "	 |   <>              _\n"
-					   "	 |  _/| -----____ ((| |))\n"
-					   "	 |               `--' |\n"
+						   "	 | @ @   Woof! Vuelva pronto...\n"
+						   "	 |   <>              _\n"
+						   "	 |  _/| -----____ ((| |))\n"
+						   "	 |               `--' |\n"
 					   "     ____|_       ___|   |___.'\n"
 					   "    /_/_____/____/_______| \n");
+				system("pause");
 			break;
 		}
-	}while(opcion!=6);
+	}while(opcion!=7);
 
 	return EXIT_SUCCESS;
 }
