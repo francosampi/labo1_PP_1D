@@ -12,8 +12,8 @@
 #include <stdlib.h>
 #include "nexo.h"
 
-#define TAMESTADIA 1000
-#define TAMPERRO 200
+#define TAMESTADIA 5
+#define TAMPERRO 100
 
 int main(void) {
 	setbuf(stdout, NULL);
@@ -27,9 +27,10 @@ int main(void) {
 
 	int opcion;
 	int ultimoIdIngresado=10000;
-	int cantidadEstadias=0;
+	int cantidadEstadias=5;
 
 	estadia_inicializarArray(arrEstadia, TAMESTADIA);
+	//estadia_hardCodear(arrEstadia, TAMESTADIA);
 
 	do{
 		printLine("GUARDERIA DE PERRITOS");

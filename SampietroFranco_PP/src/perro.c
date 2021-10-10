@@ -73,11 +73,7 @@ void perro_mostrarTodos(ePerro *_arrPerro, int _tamPerro)
 		{
 			if(_arrPerro[i].estado==1)
 			{
-				printf("%d - %s, '%s'", i, _arrPerro[i].nombre, _arrPerro[i].raza);
-				if(i<_tamPerro-1)
-				{
-					printf("\n");
-				}
+				printf("%d - %s, '%s'\n", i, _arrPerro[i].nombre, _arrPerro[i].raza);
 			}
 		}
 	}

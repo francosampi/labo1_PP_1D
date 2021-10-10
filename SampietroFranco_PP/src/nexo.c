@@ -114,12 +114,12 @@ int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPer
 
 		if(index!=-1)
 		{
-			printLine("MODIFICAR ESTADIA");
-			printf("\nESTADIA A MODIFICAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
-			estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
-
 			do{
 				auxEstadia=_arrEstadia[index];
+
+				printLine("MODIFICAR ESTADIA");
+				printf("\nESTADIA A MODIFICAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
+				estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
 				printLine("");
 				opcion=getInt("1. MODIFICAR TELEFONO\n"
 							  "2. MODIFICAR PERRO\n"
@@ -136,6 +136,7 @@ int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPer
 					case 1:
 						printf("\nESTADIA A MODIFICAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
 						estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
+						printf("\n");
 						auxEstadia.telefonoContacto=getInt("\nIngrese su numero de telefono (8 digitos): ", "Ingrese un numero de telefono valido (8 digitos): ", 9999999, 99999999);
 
 						printf("\nCONTACTO MODIFICADO:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
@@ -159,6 +160,7 @@ int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPer
 					case 2:
 						printf("\nESTADIA A MODIFICAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
 						estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
+						printf("\n");
 						auxEstadia.idPerro=perro_obtenerId(_arrPerro, _tamPerro);
 
 						printf("\nPERRITO REASIGNADO:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
