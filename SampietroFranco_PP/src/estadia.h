@@ -33,6 +33,5 @@ int estadia_buscarDesdeId(eEstadia *_arrEstadia, int _tam, int _id);
 int estadia_ordenarTodas(eEstadia *_arrEstadia, int _tam, int _tamChars);
 void estadia_swapear(eEstadia *_est1, eEstadia *_est2);
 eFecha pedirFecha(char *_msj);
-void estadia_hardCodear(eEstadia *_arrEstadia, int _tam);
 
 #endif /* ESTADIA_H_ */

@@ -27,10 +27,9 @@ int main(void) {
 
 	int opcion;
 	int ultimoIdIngresado=10000;
-	int cantidadEstadias=5;
+	int cantidadEstadias=0;
 
 	estadia_inicializarArray(arrEstadia, TAMESTADIA);
-	//estadia_hardCodear(arrEstadia, TAMESTADIA);
 
 	do{
 		printLine("GUARDERIA DE PERRITOS");
@@ -42,7 +41,7 @@ int main(void) {
 					  "6. PROMEDIO DE EDAD DE PERROS\n"
 					  "7. SALIR\n"
 					  "----------------------------\n"
-					  "Ingrese una opcion (1-6): ",
+					  "Ingrese una opcion (1-7): ",
 					  "1. RESERVAR ESTADIA\n"
 					  "2. MODIFICAR ESTADIA\n"
 					  "3. CANCELAR ESTADIA\n"
@@ -58,6 +57,10 @@ int main(void) {
 				if(estadia_reservarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, TAMNOMBRE, TAMNOMBREPERRO, &ultimoIdIngresado)==0)
 				{
 					cantidadEstadias++;
+				}
+				else
+				{
+					printf("\nNo es posible cargar más estadías...\n");
 				}
 				system("pause");
 			break;
@@ -115,13 +118,8 @@ int main(void) {
 			break;
 			case 7:
 				printLine("SALIENDO DEL PROGRAMA");
-				printf("         ||_/|\n"
-						   "	 | @ @   Woof! Vuelva pronto...\n"
-						   "	 |   <>              _\n"
-						   "	 |  _/| -----____ ((| |))\n"
-						   "	 |               `--' |\n"
-					   "     ____|_       ___|   |___.'\n"
-					   "    /_/_____/____/_______| \n");
+				printf("         ||_/|\n""	 | @ @   Woof! Vuelva pronto...\n""	 |   <>              _\n""	 |  _/| -----____ ((| |))\n"
+						"	 |               `--' |\n""     ____|_       ___|   |___.'\n""    /_/_____/____/_______| \n\n");
 				system("pause");
 			break;
 		}

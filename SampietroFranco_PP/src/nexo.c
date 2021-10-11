@@ -9,20 +9,6 @@
 #include <stdlib.h>
 #include "nexo.h"
 
-/**
- * @fn int estadia_reservarUna(eEstadia*, int, ePerro*, int, int, int, int, int)
- * @brief Esta funcion nos deja reservar una estadia
- *
- * @param _arr el arreglo de estadias
- * @param _tam el tamaño del arreglo de estadias
- * @param _arrPerro arreglo de perros
- * @param _tamPerro tamaño del arreglo de perros
- * @param _index index disponible para asignar la estadia
- * @param _id toma ultimo id ingresado
- * @param _tamCharsDuenio tamaño del arreglo de caracteres del dueño
- * @param _tamCharsPerro tamaño del arreglo de caracteres del perrito
- * @return
- */
 int estadia_reservarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro, int _tamCharsDuenio, int _tamCharsPerro, int *_id)
 {
 	if(_arrEstadia!=NULL)
