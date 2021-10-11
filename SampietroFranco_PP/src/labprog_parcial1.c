@@ -117,10 +117,16 @@ int main(void) {
 				system("pause");
 			break;
 			case 7:
-				printLine("SALIENDO DEL PROGRAMA");
-				printf("         ||_/|\n""	 | @ @   Woof! Vuelva pronto...\n""	 |   <>              _\n""	 |  _/| -----____ ((| |))\n"
-						"	 |               `--' |\n""     ____|_       ___|   |___.'\n""    /_/_____/____/_______| \n\n");
-				system("pause");
+				if(verify("Seguro que desea salir? Ingrese 's': ")==0)
+				{
+					printLine("SALIENDO DEL PROGRAMA");
+					printf("         ||_/|\n""	 | @ @   Woof! Vuelva pronto...\n""	 |   <>              _\n""	 |  _/| -----____ ((| |))\n"
+							"	 |               `--' |\n""     ____|_       ___|   |___.'\n""    /_/_____/____/_______| \n\n");
+				}
+				else
+				{
+					opcion=0;
+				}
 			break;
 		}
 	}while(opcion!=7);

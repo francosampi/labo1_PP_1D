@@ -95,7 +95,7 @@ int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPer
 		int opcion;
 		eEstadia auxEstadia;
 
-		idIngresado=getInt("Ingrese ID de su estadía (10000-19999): ", "Error. opcion inválida. Reingrese su ID (10000-19999): ", 10000, 19999);
+		idIngresado=getInt("Ingrese ID de la estadía (10000-19999): ", "Error. opcion inválida. Reingrese la ID (10000-19999): ", 10000, 19999);
 		index = estadia_buscarDesdeId(_arrEstadia, _tam, idIngresado);
 
 		if(index!=-1)
@@ -192,7 +192,7 @@ int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPer
 int estadia_cancelarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro, int _tamCharsPerro)
 {
 	int index=-1;
-	int idIngresado=getInt("Ingrese ID a cancelar: ", "Error. Reingrese ID a cancelar: ", 10000, 19999);
+	int idIngresado=getInt("Ingrese ID a cancelar (10000-19999): ", "Error. Reingrese ID a cancelar (10000-19999): ", 10000, 19999);
 
 	index=estadia_buscarDesdeId(_arrEstadia, _tam, idIngresado);
 

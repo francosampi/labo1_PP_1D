@@ -43,12 +43,15 @@ int estadia_buscarDesdeId(eEstadia *_arrEstadia, int _tam, int _id)
 {
 	int index=-1;
 
-	for(int i=0; i<_tam; i++)
+	if(_arrEstadia!=NULL)
 	{
-		if(_arrEstadia[i].estado==1 && _arrEstadia[i].id==_id)
+		for(int i=0; i<_tam; i++)
 		{
-			index=i;
-			break;
+			if(_arrEstadia[i].estado==1 && _arrEstadia[i].id==_id)
+			{
+				index=i;
+				break;
+			}
 		}
 	}
 	return index;
@@ -56,11 +59,11 @@ int estadia_buscarDesdeId(eEstadia *_arrEstadia, int _tam, int _id)
 
 int estadia_ordenarTodas(eEstadia *_arrEstadia, int _tam, int _tamChars)
 {
-	char nombreDuenioUno[_tamChars];
-	char nombreDuenioDos[_tamChars];
-
 	if(_arrEstadia!=NULL && _tam>-1)
 	{
+		char nombreDuenioUno[_tamChars];
+		char nombreDuenioDos[_tamChars];
+
 		for(int i=0; i<_tam-1; i++)
 		{
 			for(int j=i+1; j<_tam; j++)

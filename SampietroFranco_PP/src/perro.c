@@ -48,13 +48,13 @@ int perro_obtenerCantidad(ePerro *_arrPerro, int _tamPerro)
 	return -1;
 }
 
-int perro_obtenerNombre(ePerro *_arrPerro, int _tamPerro, int idPerro, char *_nombrePerro)
+int perro_obtenerNombre(ePerro *_arrPerro, int _tamPerro, int _idPerro, char *_nombrePerro)
 {
 	if(_arrPerro!=NULL)
 	{
 		for(int j=0; j<_tamPerro;j++)
 		{
-			if(idPerro==_arrPerro[j].id)
+			if(_idPerro==_arrPerro[j].id)
 			{
 				strcpy(_nombrePerro, _arrPerro[j].nombre);
 				return 0;
