@@ -13,7 +13,7 @@
 #include "nexo.h"
 
 #define TAMESTADIA 5
-#define TAMPERRO 100
+#define TAMPERRO 3
 
 int main(void) {
 	setbuf(stdout, NULL);

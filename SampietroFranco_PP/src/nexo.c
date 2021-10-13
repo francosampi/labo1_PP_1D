@@ -68,7 +68,7 @@ void estadia_mostrarUna(eEstadia _est, ePerro *_arrPerro, int _tamPerro, int _ta
 	}
 }
 
-void estadia_mostrarTodas(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro, int _tamChars)
+void estadia_mostrarTodas(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro, int _tamCharsDuenio)
 {
 	printLine("LISTA DE ESTADIAS");
 	printf("\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
@@ -77,7 +77,7 @@ void estadia_mostrarTodas(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, in
 	{
 		if(_arrEstadia[i].estado==1)
 		{
-			estadia_mostrarUna(_arrEstadia[i], _arrPerro, _tamPerro, _tamChars);
+			estadia_mostrarUna(_arrEstadia[i], _arrPerro, _tamPerro, _tamCharsDuenio);
 			printf("\n");
 		}
 	}

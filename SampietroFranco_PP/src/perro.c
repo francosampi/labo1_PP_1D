@@ -92,7 +92,7 @@ int perro_promedioEdad(ePerro *_arrPerro, int _tamPerro)
 		{
 			if(_arrPerro[i].estado==1)
 			{
-				edadAcum += _arrPerro[i].edad;
+				edadAcum+=_arrPerro[i].edad;
 			}
 		}
 		printf("%.2f años...\n", (float)edadAcum/cantidadPerritos);
