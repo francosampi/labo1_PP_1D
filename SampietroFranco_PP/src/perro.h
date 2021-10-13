@@ -21,13 +21,24 @@ typedef struct
 
 /**
  * @fn int perro_obtenerId(ePerro*, int)
- * @brief calcula la cantidad de perritos (n), los muestra y le pide al usuario que ingrese del 0 a n para devolver su ID
+ * @brief muestra los perros del arreglo que tengan estado 1 (existen) y le pide al usuario ingresr el id para poder devolverlo
  *
  * @param _arrPerro arreglo de perros
  * @param _tamPerro tamanio del arreglo de perros
- * @return el ID del perro
+ * @return -1 si hubo error (no existe el arreglo) o el ID del perro si no hubo errores
  */
 int perro_obtenerId(ePerro *_arrPerro, int _tamPerro);
+
+/**
+ * @fn int perro_buscarDesdeId(ePerro*, int, int)
+ * @brief toma un id por parametro y busca si existe un perro disponible con esa id y devuelve el index
+ *
+ * @param _arrPerro arreglo de perros
+ * @param _tamPerro tamanio del arreglo de perros
+ * @param _id el id del perro
+ * @return  -1 si hubo error (no se encuentra o el arreglo es NULL) o el index si no hubo errores
+ */
+int perro_buscarDesdeId(ePerro *_arrPerro, int _tamPerro, int _id);
 
 /**
  * @fn int perro_obtenerCantidad(ePerro*, int)

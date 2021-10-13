@@ -14,20 +14,44 @@
 int perro_obtenerId(ePerro *_arrPerro, int _tamPerro)
 {
 	int opcion;
-	int idPerrito=-1;
-	int cantidadPerritos = perro_obtenerCantidad(_arrPerro, _tamPerro);
+	int index=-1;
 
 	if(_arrPerro!=NULL)
 	{
-		perro_mostrarTodos(_arrPerro, _tamPerro);
-		printf("Ingrese su perrito: (0-%d): ", cantidadPerritos-1);
-		opcion=getInt("", "Error. opcion inválida. Reingrese su perrito: ", 0, cantidadPerritos-1);
+		while(index==-1)
+		{
+			perro_mostrarTodos(_arrPerro, _tamPerro);
+			opcion=getInt("Ingrese su perrito(7000-7050): ", "Error. opcion inválida. Reingrese su perrito(7000-7050): ", 7000, 7050);
 
-		idPerrito=_arrPerro[opcion].id;
-
-		return idPerrito;
+			if (perro_buscarDesdeId(_arrPerro, _tamPerro, opcion)!=-1)
+			{
+				return opcion;
+			}
+			else
+			{
+				printf("\nError. No se encuentra al perrito bajo esa ID (ID: %d)\n", opcion);
+			}
+		}
 	}
 	return -1;
+}
+
+int perro_buscarDesdeId(ePerro *_arrPerro, int _tamPerro, int _id)
+{
+	int index =-1;
+
+	if(_arrPerro!=NULL)
+	{
+		for(int i=0; i<_tamPerro; i++)
+		{
+			if(_arrPerro[i].estado==1 && _arrPerro[i].id==_id)
+			{
+				index = i;
+				return index;
+			}
+		}
+	}
+	return index;
 }
 
 int perro_obtenerCantidad(ePerro *_arrPerro, int _tamPerro)
@@ -73,7 +97,7 @@ void perro_mostrarTodos(ePerro *_arrPerro, int _tamPerro)
 		{
 			if(_arrPerro[i].estado==1)
 			{
-				printf("%d - %s, '%s'\n", i, _arrPerro[i].nombre, _arrPerro[i].raza);
+				printf("%d - %s, %s\n", _arrPerro[i].id, _arrPerro[i].nombre, _arrPerro[i].raza);
 			}
 		}
 	}

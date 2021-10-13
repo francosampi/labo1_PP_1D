@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "inputs.h"
 
 int getString(char *_str, char *_msg, char *_errMsg, int _strMaxLen)
@@ -100,7 +101,7 @@ int getInt(char *_msg, char *_errMsg, int _min, int _max)
 	fflush(stdin);
 	scanf("%d", &num);
 
-	while(num < _min || num > _max)
+	while(isdigit(num)==0 && (num < _min || num > _max))
 	{
 		printf("%s", _errMsg);
 		fflush(stdin);
@@ -117,7 +118,7 @@ float getFloat(char *_msg, char *_errMsg, int _min, int _max)
 	fflush(stdin);
 	scanf("%f", &num);
 
-	while(num < _min || num > _max)
+	while(isdigit(num)==0 && (num < _min || num > _max))
 	{
 		printf("%s", _errMsg);
 		fflush(stdin);
