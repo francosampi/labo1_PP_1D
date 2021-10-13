@@ -11,6 +11,17 @@
 #include "perro.h"
 #include "inputs.h"
 
+void perro_inicializarArray(ePerro *_arrPerro, int _tamPerro) //Inicia en 3 por hardcodeo
+{
+	if(_arrPerro!=NULL)
+	{
+		for(int i=3; i<_tamPerro; i++)
+		{
+			_arrPerro[i].estado=0;
+		}
+	}
+}
+
 int perro_obtenerId(ePerro *_arrPerro, int _tamPerro)
 {
 	int opcion;

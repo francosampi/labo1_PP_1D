@@ -20,6 +20,15 @@ typedef struct
 }ePerro;
 
 /**
+ * @fn void perro_inicializarArray(ePerro*, int)
+ * @brief pone en estado 0 (libre) todos los elemntos del arreglo de perros exceptuando los hardocdeados
+ *
+ * @param _arrPerro arreglo de perros
+ * @param _tamPerro tamanio del arreglo de perros
+ */
+void perro_inicializarArray(ePerro *_arrPerro, int _tamPerro);
+
+/**
  * @fn int perro_obtenerId(ePerro*, int)
  * @brief muestra los perros del arreglo que tengan estado 1 (existen) y le pide al usuario ingresr el id para poder devolverlo
  *

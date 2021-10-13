@@ -30,6 +30,7 @@ int main(void) {
 	int cantidadEstadias=0;
 
 	estadia_inicializarArray(arrEstadia, TAMESTADIA);
+	perro_inicializarArray(arrPerro, TAMPERRO);
 
 	do{
 		printLine("GUARDERIA DE PERRITOS");
