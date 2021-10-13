@@ -14,7 +14,6 @@ int estadia_reservarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int 
 	if(_arrEstadia!=NULL)
 	{
 		int index=estadia_buscarEspacio(_arrEstadia, _tam);
-		int indexPerrito=-1;
 		int nuevoId=*_id;
 
 		if (index!=-1)
