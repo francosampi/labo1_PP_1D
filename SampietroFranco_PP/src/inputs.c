@@ -96,16 +96,17 @@ int getName(char *_str, char *_msg, char *_errMsgOnLen, char *_errMsgNotLetter, 
 int getInt(char *_msg, char *_errMsg, int _min, int _max)
 {
 	int num;
+	int resOperation;
 
 	printf("%s", _msg);
 	fflush(stdin);
-	scanf("%d", &num);
+	resOperation=scanf("%d", &num);
 
-	while(isdigit(num)==0 && (num < _min || num > _max))
+	while(resOperation!=1 || (num < _min || num > _max))
 	{
 		printf("%s", _errMsg);
 		fflush(stdin);
-		scanf("%d", &num);
+		resOperation=scanf("%d", &num);
 	}
 	return num;
 }
@@ -113,16 +114,17 @@ int getInt(char *_msg, char *_errMsg, int _min, int _max)
 float getFloat(char *_msg, char *_errMsg, int _min, int _max)
 {
 	float num;
+	int resOperation;
 
 	printf("%s", _msg);
 	fflush(stdin);
-	scanf("%f", &num);
+	resOperation=scanf("%f", &num);
 
-	while(isdigit(num)==0 && (num < _min || num > _max))
+	while(resOperation!=1 || (num < _min || num > _max))
 	{
 		printf("%s", _errMsg);
 		fflush(stdin);
-		scanf("%f", &num);
+		resOperation=scanf("%f", &num);
 	}
 	return num;
 }

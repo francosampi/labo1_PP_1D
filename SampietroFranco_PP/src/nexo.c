@@ -21,40 +21,40 @@ int estadia_reservarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int 
 			printLine("RESERVAR ESTADIA");
 			_arrEstadia[index].id=nuevoId;
 
-				getName(_arrEstadia[index].nombreDuenio,
-						"Ingrese nombre del/a dueño/a: ",
-						"El nombre no debe superar los 50 caracteres\n",
-						"El nombre no debe tener caracteres especiales\n",
-						"El nombre no puede estar vacío\n",
-						_tamCharsDuenio);
-				_arrEstadia[index].telefonoContacto=getInt("Ingrese su numero de telefono (8 digitos): ", "Ingrese un numero de telefono valido (8 digitos): ", 9999999, 99999999);
-				_arrEstadia[index].idPerro=perro_obtenerId(_arrPerro, _tamPerro);
-				_arrEstadia[index].fecha=pedirFecha("INGRESAR FECHA");
+			getName(_arrEstadia[index].nombreDuenio,
+					"Ingrese nombre del/a dueño/a: ",
+					"El nombre no debe superar los 20 caracteres\n",
+					"El nombre no debe tener caracteres especiales\n",
+					"El nombre no puede estar vacío\n",
+					_tamCharsDuenio);
+			_arrEstadia[index].telefonoContacto=getInt("Ingrese su numero de telefono (8 digitos): ", "Ingrese un numero de telefono valido (8 digitos): ", 9999999, 99999999);
+			_arrEstadia[index].idPerro=perro_obtenerId(_arrPerro, _tamPerro);
+			_arrEstadia[index].fecha=pedirFecha("INGRESAR FECHA");
 
+			printLine("");
+			if(_arrEstadia[index].idPerro!=-1)
+			{
+				printf("ESTADIA A RESERVAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
+				estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
 				printLine("");
-				if(_arrEstadia[index].idPerro!=-1)
-				{
-					printf("ESTADIA A RESERVAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
-					estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _tamCharsPerro);
-					printLine("");
 
-					if(verify("\nConfirmar reserva? Ingrese 's': ")==0)
-					{
-						_arrEstadia[index].estado=1;
-						nuevoId++;
-						*_id=nuevoId;
-						printf("\nSe dio de alta la reserva!");
-						printLine("");
-						return 0;
-					}
-					else
-					{
-						printf("\nSe canceló el alta de la reserva...");
-						printLine("");
-					}
+				if(verify("\nConfirmar reserva? Ingrese 's': ")==0)
+				{
+					_arrEstadia[index].estado=1;
+					nuevoId++;
+					*_id=nuevoId;
+					printf("\nSe dio de alta la reserva!");
+					printLine("");
+					return 0;
+				}
+				else
+				{
+					printf("\nSe canceló el alta de la reserva...");
+					printLine("");
 				}
 			}
 		}
+	}
 	return -1;
 }
 

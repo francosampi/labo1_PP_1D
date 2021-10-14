@@ -99,16 +99,23 @@ int perro_obtenerNombre(ePerro *_arrPerro, int _tamPerro, int _idPerro, char *_n
 	return -1;
 }
 
+void perro_mostrarUno(ePerro _perro)
+{
+	printf("%-10d %-20s %-20s %-20d", _perro.id, _perro.nombre, _perro.raza, _perro.edad);
+}
+
 void perro_mostrarTodos(ePerro *_arrPerro, int _tamPerro)
 {
 	printLine("LISTA DE PERRITOS");
+	printf("\n%-10s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
 	if(_arrPerro!=NULL)
 	{
 		for(int i=0; i<_tamPerro; i++)
 		{
 			if(_arrPerro[i].estado==1)
 			{
-				printf("%d - %s, %s\n", _arrPerro[i].id, _arrPerro[i].nombre, _arrPerro[i].raza);
+				perro_mostrarUno(_arrPerro[i]);
+				printf("\n");
 			}
 		}
 	}

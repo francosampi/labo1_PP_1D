@@ -72,8 +72,16 @@ int perro_obtenerCantidad(ePerro *_arrPerro, int _tamPerro);
 int perro_obtenerNombre(ePerro *_arrPerro, int _tamPerro, int _idPerro, char *_nombrePerro);
 
 /**
+ * @fn void perro_mostrarUno(ePerro)
+ * @brief muestra un perrito por consola
+ *
+ * @param _perro struct del perrito pasado por consola
+ */
+void perro_mostrarUno(ePerro _perro);
+
+/**
  * @fn void perro_mostrarTodos(ePerro*, int)
- * @brief recorre el arreglo de perros y muestra por consola cada nombre con su raza
+ * @brief recorre el arreglo de perros y muestra por consola cada uno con sus datos
  *
  * @param _arrPerro arreglo de perros
  * @param _tamPerro tamanio del arreglo de perros
