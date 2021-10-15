@@ -133,7 +133,14 @@ int main(void) {
 			case 7:
 				if (cantidadEstadias>0)
 				{
-					perro_masEstadias(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO);
+					if(perro_obtenerCantidad(arrPerro, TAMPERRO)>0)
+					{
+						perro_masEstadias(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO);
+					}
+					else
+					{
+						printf("\nNo hay perritos para listar...\n");
+					}
 				}
 				else
 				{
@@ -144,7 +151,14 @@ int main(void) {
 			case 8:
 				if (cantidadEstadias>0)
 				{
-					perro_conSusEstadias(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO);
+					if(perro_obtenerCantidad(arrPerro, TAMPERRO)>0)
+					{
+						perro_conSusEstadias(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO);
+					}
+					else
+					{
+						printf("\nNo hay perritos para listar...\n");
+					}
 				}
 				else
 				{

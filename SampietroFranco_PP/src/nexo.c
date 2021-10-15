@@ -307,9 +307,16 @@ int perro_masEstadias(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _t
 		}
 		if(indexPerroMasEstadias!=-1)
 		{
-			printLine("PERRITO CON MAS ESTADIAS");
+			printLine("PERRITO/S CON MAS ESTADIAS");
 			printf("\n%-10s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
-			perro_mostrarUno(_arrPerro[indexPerroMasEstadias]);
+			for(int b=0; b<_tamPerro; b++)
+			{
+				if(_arrPerro[b].estado==1 && _arrPerro[b].estadias==mayorCantidadEstadias)
+				{
+					perro_mostrarUno(_arrPerro[b]);
+					printf("\n");
+				}
+			}
 			printLine("");
 			return 0;
 		}
