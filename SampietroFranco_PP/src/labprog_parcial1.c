@@ -14,48 +14,59 @@
 
 #define TAMESTADIA 50
 #define TAMPERRO 50
+#define TAMDUENIO 50
 
 int main(void) {
 	setbuf(stdout, NULL);
 
 	eEstadia arrEstadia[TAMESTADIA];
 	ePerro arrPerro[TAMPERRO]={
-			{7000, "Lobo", "Sharpei", 2, 1},
-			{7001, "Sheila", "Golden", 12, 1},
-			{7002, "Reina", "Galgo", 13, 1}
+			{7000, "Lobo", "Sharpei", 2, 0, 1},
+			{7001, "Sheila", "Golden", 12, 0, 1},
+			{7002, "Reina", "Galgo", 13, 0, 1}
+	};
+	eDuenio arrDuenio[TAMDUENIO]={
+			{30000, "AA", 10101010, 1},
+			{30001, "BB", 20202020, 1},
+			{30002, "CC", 30303030, 1}
 	};
 
 	int opcion;
-	int ultimoIdIngresado=10000;
+	int ultimoIdEstadia=10000;
 	int cantidadEstadias=0;
 
 	estadia_inicializarArray(arrEstadia, TAMESTADIA);
 	perro_inicializarArray(arrPerro, TAMPERRO);
+	duenio_inicializarArray(arrDuenio, TAMDUENIO);
 
 	do{
-		printLine("GUARDERIA DE PERRITOS");
+		printLine("GUARDERIA");
 		opcion=getInt("1. RESERVAR ESTADIA\n"
 					  "2. MODIFICAR ESTADIA\n"
 					  "3. CANCELAR ESTADIA\n"
 					  "4. LISTAR ESTADIAS\n"
 					  "5. LISTAR PERROS\n"
 					  "6. PROMEDIO DE EDAD DE PERROS\n"
-					  "7. SALIR\n"
+					  "7. PERRO CON MAS ESTADIAS\n"
+					  "8. PERRO CON SUS ESTADIAS DIARIAS\n"
+					  "9. SALIR\n"
 					  "----------------------------\n"
-					  "Ingrese una opcion (1-7): ",
+					  "Ingrese una opcion (1-9): ",
 					  "1. RESERVAR ESTADIA\n"
 					  "2. MODIFICAR ESTADIA\n"
 					  "3. CANCELAR ESTADIA\n"
 					  "4. LISTAR ESTADIAS\n"
 					  "5. LISTAR PERROS\n"
 					  "6. PROMEDIO DE EDAD DE PERROS\n"
-					  "7. SALIR\n"
+					  "7. PERRO CON MAS ESTADIAS\n"
+					  "8. PERRO CON SUS ESTADIAS DIARIAS\n"
+					  "9. SALIR\n"
 					  "----------------------------\n"
-				      "Opcion invalida, reingrese (1-7): ", 1, 7);
+				      "Opcion invalida, reingrese (1-9): ", 1, 9);
 		switch(opcion)
 		{
 			case 1:
-				if(estadia_reservarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, TAMNOMBRE, TAMNOMBREPERRO, &ultimoIdIngresado)==0)
+				if (estadia_reservarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO, &ultimoIdEstadia)==0)
 				{
 					cantidadEstadias++;
 				}
@@ -66,9 +77,9 @@ int main(void) {
 				system("pause");
 			break;
 			case 2:
-				if(cantidadEstadias>0)
+				if (cantidadEstadias>0)
 				{
-					estadia_subMenuModificarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, TAMNOMBREPERRO);
+					estadia_subMenuModificarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO);
 				}
 				else
 				{
@@ -77,9 +88,9 @@ int main(void) {
 				system("pause");
 			break;
 			case 3:
-				if(cantidadEstadias>0)
+				if (cantidadEstadias>0)
 				{
-					if (estadia_cancelarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, TAMNOMBREPERRO)==0)
+					if (estadia_cancelarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO)==0)
 					{
 						cantidadEstadias--;
 					}
@@ -91,10 +102,10 @@ int main(void) {
 				system("pause");
 			break;
 			case 4:
-				if(cantidadEstadias>0)
+				if (cantidadEstadias>0)
 				{
-					estadia_ordenarTodas(arrEstadia, TAMESTADIA, TAMNOMBRE);
-					estadia_mostrarTodas(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, TAMNOMBREPERRO);
+					estadia_ordenarTodas(arrEstadia, TAMESTADIA, arrDuenio, TAMPERRO, TAMNOMBREDUENIO);
+					estadia_mostrarTodas(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO);
 				}
 				else
 				{
@@ -118,6 +129,17 @@ int main(void) {
 				system("pause");
 			break;
 			case 7:
+				if (cantidadEstadias>0 && perro_obtenerCantidad(arrPerro, TAMPERRO)>0)
+				{
+					perro_masEstadias(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO);
+				}
+				else
+				{
+					printf("\nNo hay perritos para calcular...\n");
+				}
+				system("pause");
+			break;
+			case 9:
 				if(verify("Seguro que desea salir? Ingrese 's': ")==0)
 				{
 					printLine("SALIENDO DEL PROGRAMA");
@@ -130,7 +152,7 @@ int main(void) {
 				}
 			break;
 		}
-	}while(opcion!=7);
+	}while(opcion!=9);
 
 	return EXIT_SUCCESS;
 }

@@ -8,8 +8,6 @@
 #ifndef ESTADIA_H_
 #define ESTADIA_H_
 
-#define TAMNOMBRE 21
-
 typedef struct
 {
 	int dia;
@@ -20,9 +18,8 @@ typedef struct
 typedef struct
 {
 	int id;
-	char nombreDuenio[TAMNOMBRE];
-	int telefonoContacto;
 	int idPerro;
+	int idDuenio;
 	eFecha fecha;
 	int estado; //0-Vacio, 1-Ocupado
 }eEstadia;
@@ -56,17 +53,6 @@ int estadia_buscarEspacio(eEstadia *_arrEstadia, int _tam);
  * @return el index encontrado o -1 si hubo error (no se encontro el index)
  */
 int estadia_buscarDesdeId(eEstadia *_arrEstadia, int _tam, int _id);
-
-/**
- * @fn int estadia_ordenarTodas(eEstadia*, int, int)
- * @brief ordena las estadias por dia de la fecha, mes de la fecha, anio de la fecha y por ultimo alfabeticamente si las fechas son iguales
- *
- * @param _arrEstadia arreglo de estadia
- * @param _tam tamanio del arreglo de estadia
- * @param _tamChars tamanio del arreglo del nombre de los duenios de las estadias
- * @return -1 si hubo error (si el arreglo es NULL) o 0 si no hubo errores
- */
-int estadia_ordenarTodas(eEstadia *_arrEstadia, int _tam, int _tamChars);
 
 /**
  * @fn void estadia_swapear(eEstadia*, eEstadia*)

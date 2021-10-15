@@ -23,7 +23,7 @@ void estadia_inicializarArray(eEstadia *_arrEstadia, int _tam)
 
 int estadia_buscarEspacio(eEstadia *_arrEstadia, int _tam)
 {
-	int index = -1;
+	int index=-1;
 
 	if(_arrEstadia!=NULL)
 	{
@@ -57,54 +57,6 @@ int estadia_buscarDesdeId(eEstadia *_arrEstadia, int _tam, int _id)
 	return index;
 }
 
-int estadia_ordenarTodas(eEstadia *_arrEstadia, int _tam, int _tamChars)
-{
-	if(_arrEstadia!=NULL && _tam>-1)
-	{
-		char nombreDuenioUno[_tamChars];
-		char nombreDuenioDos[_tamChars];
-
-		for(int i=0; i<_tam-1; i++)
-		{
-			for(int j=i+1; j<_tam; j++)
-			{
-				if(_arrEstadia[i].estado==1 && _arrEstadia[j].estado==1)
-				{
-					if(_arrEstadia[i].fecha.dia<_arrEstadia[j].fecha.dia)
-					{
-						estadia_swapear(&_arrEstadia[i], &_arrEstadia[j]);
-					}
-					if(_arrEstadia[i].fecha.mes<_arrEstadia[j].fecha.mes)
-					{
-						estadia_swapear(&_arrEstadia[i], &_arrEstadia[j]);
-					}
-					if(_arrEstadia[i].fecha.anio<_arrEstadia[j].fecha.anio)
-					{
-						estadia_swapear(&_arrEstadia[i], &_arrEstadia[j]);
-					}
-					if(
-						(_arrEstadia[i].fecha.anio==_arrEstadia[j].fecha.anio) &&
-						(_arrEstadia[i].fecha.mes==_arrEstadia[j].fecha.mes) &&
-						(_arrEstadia[i].fecha.dia==_arrEstadia[j].fecha.dia)
-					)
-					{
-						strcpy(nombreDuenioUno, _arrEstadia[i].nombreDuenio);
-						strcpy(nombreDuenioDos, _arrEstadia[j].nombreDuenio);
-						strlwr(nombreDuenioUno);
-						strlwr(nombreDuenioDos);
-
-						if(strcmp(nombreDuenioUno, nombreDuenioDos)==1)
-						{
-							estadia_swapear(&_arrEstadia[i], &_arrEstadia[j]);
-						}
-					}
-				}
-			}
-		}
-		return 0;
-	}
-	return -1;
-}
 
 void estadia_swapear(eEstadia *_est1, eEstadia *_est2)
 {
@@ -122,7 +74,7 @@ eFecha pedirFecha(char *_msj)
 	printLine(_msj);
 	fecha.dia = getInt("Ingrese dia (1-31): ", "Error. Reingrese dia (1-31): ", 1, 31);
 	fecha.mes = getInt("Ingrese mes (1-12): ", "Error. Reingrese mes (1-12): ", 1, 12);
-	fecha.anio = getInt("Ingrese año (2019-2021): ", "Error. Reingrese año (2021-2023): ", 2021, 2023);
+	fecha.anio = getInt("Ingrese año (2021-2023): ", "Error. Reingrese año (2021-2023): ", 2021, 2023);
 
 	return fecha;
 }

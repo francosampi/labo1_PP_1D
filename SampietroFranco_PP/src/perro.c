@@ -17,6 +17,7 @@ void perro_inicializarArray(ePerro *_arrPerro, int _tamPerro) //Inicia en 3 por 
 	{
 		for(int i=3; i<_tamPerro; i++)
 		{
+			_arrPerro[i].estadias=0;
 			_arrPerro[i].estado=0;
 		}
 	}

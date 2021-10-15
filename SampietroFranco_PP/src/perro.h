@@ -16,6 +16,7 @@ typedef struct
 	char nombre[TAMNOMBREPERRO];
 	char raza[TAMNOMBREPERRO];
 	int edad;
+	int estadias;
 	int estado; //0-Vacio, 1-Ocupado
 }ePerro;
 
