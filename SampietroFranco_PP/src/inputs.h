@@ -79,6 +79,8 @@ int getInt(char *_msg, char *_errMsg, int _min, int _max);
  * @param _max the maximum possible number
  * @return returns the float number entered
  */
+long int getlong(char *_msg, char *_errMsg, long int _min, long int _max);
+
 float getFloat(char *_msg, char *_errMsg, int _min, int _max);
 
 double getDouble(char *_msg, char *_errMsg, double _min, double _max);

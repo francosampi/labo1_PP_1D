@@ -80,7 +80,7 @@ int duenio_obtenerNombre(eDuenio *_arrDuenio, int _tamDuenio, int _idDuenio, cha
 	return -1;
 }
 
-int duenio_obtenerTelefono(eDuenio *_arrDuenio, int _tamDuenio, int _idDuenio, int *_telDuenio)
+int duenio_obtenerTelefono(eDuenio *_arrDuenio, int _tamDuenio, int _idDuenio, long int *_telDuenio)
 {
 	if(_arrDuenio!=NULL)
 	{
@@ -98,7 +98,7 @@ int duenio_obtenerTelefono(eDuenio *_arrDuenio, int _tamDuenio, int _idDuenio, i
 
 void duenio_mostrarUno(eDuenio _duenio)
 {
-	printf("%-10d %-40s %-20d", _duenio.id, _duenio.nombre, _duenio.telefonoContacto);
+	printf("%-10d %-20s %-20ld", _duenio.id, _duenio.nombre, _duenio.telefonoContacto);
 }
 
 void duenio_mostrarTodos(eDuenio *_arrDuenio, int _tamDuenio)

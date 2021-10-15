@@ -111,6 +111,24 @@ int getInt(char *_msg, char *_errMsg, int _min, int _max)
 	return num;
 }
 
+long int getlong(char *_msg, char *_errMsg, long int _min, long int _max)
+{
+	long int num;
+	int resOperation;
+
+	printf("%s", _msg);
+	fflush(stdin);
+	resOperation=scanf("%ld", &num);
+
+	while(resOperation!=1 || (num < _min || num > _max))
+	{
+		printf("%s", _errMsg);
+		fflush(stdin);
+		resOperation=scanf("%ld", &num);
+	}
+	return num;
+}
+
 double getDouble(char *_msg, char *_errMsg, double _min, double _max)
 {
 	double num;

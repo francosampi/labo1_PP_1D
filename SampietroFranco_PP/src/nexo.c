@@ -57,7 +57,7 @@ void estadia_mostrarUna(eEstadia _est, ePerro *_arrPerro, int _tamPerro, eDuenio
 {
 	char nombrePerrito[_tamCharsPerro];
 	char nombreDuenio[_tamCharsDuenio];
-	int telDuenio;
+	long int telDuenio;
 
 	if(
 		perro_obtenerNombre(_arrPerro, _tamPerro, _est.idPerro, nombrePerrito)==0 &&
@@ -65,7 +65,7 @@ void estadia_mostrarUna(eEstadia _est, ePerro *_arrPerro, int _tamPerro, eDuenio
 		duenio_obtenerTelefono(_arrDuenio, _tamDuenio, _est.idDuenio, &telDuenio)==0
 		)
 	{
-		printf("%-10d %-20s %-20d %-20s %d/%d/%d", _est.id, nombreDuenio, telDuenio, nombrePerrito, _est.fecha.dia, _est.fecha.mes, _est.fecha.anio);
+		printf("%-10d %-20s %-20ld %-20s %d/%d/%d", _est.id, nombreDuenio, telDuenio, nombrePerrito, _est.fecha.dia, _est.fecha.mes, _est.fecha.anio);
 	}
 }
 
@@ -97,7 +97,7 @@ int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPer
 		int opcion;
 		eEstadia auxEstadia;
 		eDuenio auxDuenio;
-		int telefonoAux;
+		long int telefonoAux;
 
 		idIngresado=getInt("Ingrese ID de la estadía (10000-19999): ", "Error. opcion inválida. Reingrese la ID (10000-19999): ", 10000, 19999);
 		index = estadia_buscarDesdeId(_arrEstadia, _tam, idIngresado);
@@ -127,7 +127,7 @@ int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPer
 						printf("\nESTADIA A MODIFICAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO", "PERRO/A", "FECHA DE ESTADIA");
 						estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _arrDuenio, _tamDuenio, _tamCharsPerro, _tamCharsDuenio);
 						printf("\n");
-						telefonoAux=getDouble("\nIngrese su numero de telefono (10 digitos): ", "Ingrese un numero de telefono valido (10 digitos): ", 1000000000, 5499999999);
+						telefonoAux=getlong("\nIngrese su numero de telefono (10 digitos): ", "Ingrese un numero de telefono valido (10 digitos): ", 100000000, 1599999999);
 
 						int indexDuenio = duenio_buscarDesdeId(_arrDuenio, _tamDuenio, _arrEstadia[index].idDuenio);
 						if (indexDuenio!=-1)
@@ -310,14 +310,13 @@ int perro_masEstadias(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _t
 			printLine("PERRITO CON MAS ESTADIAS");
 			printf("\n%-10s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
 			perro_mostrarUno(_arrPerro[indexPerroMasEstadias]);
-			printf("\n");
+			printLine("");
 			return 0;
 		}
 		else
 		{
 			printf("Hubo un error encontrando al perrito...");
 		}
-		printf("\n");
 	}
 	return -1;
 }
