@@ -89,5 +89,6 @@ int estadia_cancelarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int 
 int estadia_ordenarTodas(eEstadia *_arrEstadia, int _tam, eDuenio *_arrDuenio, int _tamDuenio, int _tamChars);
 
 int perro_masEstadias(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro);
+int perro_conSusEstadias(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro, eDuenio *_arrDuenio, int _tamDuenio, int _tamCharsPerro, int _tamCharsDuenio);
 
 #endif /* NEXO_H_ */

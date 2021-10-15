@@ -135,7 +135,18 @@ int main(void) {
 				}
 				else
 				{
-					printf("\nNo hay perritos para calcular...\n");
+					printf("\nNo hay perritos para calcular sus estadias...\n");
+				}
+				system("pause");
+			break;
+			case 8:
+				if (cantidadEstadias>0 && perro_obtenerCantidad(arrPerro, TAMPERRO)>0)
+				{
+					perro_conSusEstadias(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO);
+				}
+				else
+				{
+					printf("\nNo hay perritos para listar con estadias...\n");
 				}
 				system("pause");
 			break;

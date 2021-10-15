@@ -320,3 +320,40 @@ int perro_masEstadias(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _t
 	}
 	return -1;
 }
+
+int perro_conSusEstadias(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _tamPerro, eDuenio *_arrDuenio, int _tamDuenio, int _tamCharsPerro, int _tamCharsDuenio)
+{
+	if(_arrEstadia!=NULL && _arrPerro!=NULL)
+	{
+		for(int i=0; i<_tamPerro; i++)
+		{
+			int tieneEstadias=0;
+			if(_arrPerro[i].estado==1)
+			{
+				char nombrePerroTitulo[_tamCharsPerro];
+				perro_obtenerNombre(_arrPerro, _tamPerro, _arrPerro[i].id, nombrePerroTitulo);
+				printLine(nombrePerroTitulo);
+				printf("\n");
+				for(int j=0; j<_tam; j++)
+				{
+					if(_arrEstadia[j].estado==1)
+					{
+						if(_arrEstadia[j].idPerro==_arrPerro[i].id)
+						{
+							tieneEstadias=1;
+							printf("ESTADIAS:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
+							estadia_mostrarUna(_arrEstadia[j], _arrPerro, _tamPerro, _arrDuenio, _tamDuenio, _tamCharsPerro, _tamCharsDuenio);
+							printf("\n");
+						}
+					}
+				}
+				if(tieneEstadias==0)
+				{
+					printf("No tiene reservada ninguna estadia...\n");
+				}
+			}
+		}
+		printLine("");
+	}
+	return -1;
+}

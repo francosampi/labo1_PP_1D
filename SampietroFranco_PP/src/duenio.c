@@ -47,22 +47,22 @@ int duenio_obtenerIdDesdeLista(eDuenio *_arrDuenio, int _tamDuenio)
 }
 
 
-int duenio_obtenerIdDesdeIndex(eDuenio *_arrDuenio, int _tamDuenio, int _index)
+int duenio_obtenerIdDesdeIndex(eDuenio *_arrDuenio, int _tamDuenio, int _id)
 {
-	int index=-1;
+	int id=-1;
 
 	if(_arrDuenio!=NULL)
 	{
 		for(int i=0; i<_tamDuenio; i++)
 		{
-			if(_arrDuenio[i].estado==1 && i==_index)
+			if(_arrDuenio[i].estado==1 && i==_id)
 			{
-				index=_index;
-				return index;
+				id=_id;
+				return id;
 			}
 		}
 	}
-	return index;
+	return id;
 }
 
 

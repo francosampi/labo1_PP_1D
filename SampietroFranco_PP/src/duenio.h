@@ -20,7 +20,7 @@ typedef struct
 
 void duenio_inicializarArray(eDuenio *_arrDuenio, int _tamDuenio);
 int duenio_obtenerIdDesdeLista(eDuenio *_arrDuenio, int _tamDuenio);
-int duenio_obtenerIdDesdeIndex(eDuenio *_arrDuenio, int _tamDuenio, int _index);
+int duenio_obtenerIdDesdeIndex(eDuenio *_arrDuenio, int _tamDuenio, int _id);
 int duenio_buscarDesdeId(eDuenio *_arrDuenio, int _tamDuenio, int _id);
 int duenio_obtenerNombre(eDuenio *_arrDuenio, int _tamDuenio, int _idDuenio, char *_nombreDuenio);
 int duenio_obtenerTelefono(eDuenio *_arrDuenio, int _tamDuenio, int _idDuenio, int *_telDuenio);
