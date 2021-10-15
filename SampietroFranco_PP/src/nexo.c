@@ -127,17 +127,17 @@ int estadia_subMenuModificarUna(eEstadia *_arrEstadia, int _tam, ePerro *_arrPer
 						printf("\nESTADIA A MODIFICAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO", "PERRO/A", "FECHA DE ESTADIA");
 						estadia_mostrarUna(_arrEstadia[index], _arrPerro, _tamPerro, _arrDuenio, _tamDuenio, _tamCharsPerro, _tamCharsDuenio);
 						printf("\n");
-						telefonoAux=getInt("\nIngrese su numero de telefono (8 digitos): ", "Ingrese un numero de telefono valido (8 digitos): ", 9999999, 99999999);
+						telefonoAux=getDouble("\nIngrese su numero de telefono (10 digitos): ", "Ingrese un numero de telefono valido (10 digitos): ", 1000000000, 5499999999);
 
-						//MODIFICAR TELEFONO DE DUEÑO DE ESTADIA
 						int indexDuenio = duenio_buscarDesdeId(_arrDuenio, _tamDuenio, _arrEstadia[index].idDuenio);
 						if (indexDuenio!=-1)
 						{
+							auxDuenio=_arrDuenio[indexDuenio];
 							auxDuenio.telefonoContacto=telefonoAux;
 						}
 
-						printf("\nESTADIA A MODIFICAR:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO", "PERRO/A", "FECHA DE ESTADIA");
-						estadia_mostrarUna(auxEstadia, _arrPerro, _tamPerro, _arrDuenio, _tamDuenio, _tamCharsPerro, _tamCharsDuenio);
+						printf("\n%-10s %-20s %-20s\n", "ID", "NOMBRE", "TELEFONO");
+						duenio_mostrarUno(auxDuenio);
 						printLine("");
 
 						if (verify("\nGuardar cambios? Ingresar 's': ")==0)
@@ -317,6 +317,7 @@ int perro_masEstadias(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int _t
 		{
 			printf("Hubo un error encontrando al perrito...");
 		}
+		printf("\n");
 	}
 	return -1;
 }
@@ -334,6 +335,7 @@ int perro_conSusEstadias(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int
 				perro_obtenerNombre(_arrPerro, _tamPerro, _arrPerro[i].id, nombrePerroTitulo);
 				printLine(nombrePerroTitulo);
 				printf("\n");
+				printLine("ESTADIAS");
 				for(int j=0; j<_tam; j++)
 				{
 					if(_arrEstadia[j].estado==1)
@@ -341,7 +343,7 @@ int perro_conSusEstadias(eEstadia *_arrEstadia, int _tam, ePerro *_arrPerro, int
 						if(_arrEstadia[j].idPerro==_arrPerro[i].id)
 						{
 							tieneEstadias=1;
-							printf("ESTADIAS:\n\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
+							printf("\n%-10s %-20s %-20s %-20s %-20s\n", "ID", "DUEÑO", "TELEFONO/CEL", "PERRO/A", "FECHA DE ESTADIA");
 							estadia_mostrarUna(_arrEstadia[j], _arrPerro, _tamPerro, _arrDuenio, _tamDuenio, _tamCharsPerro, _tamCharsDuenio);
 							printf("\n");
 						}

@@ -26,9 +26,9 @@ int main(void) {
 			{7002, "Reina", "Galgo", 13, 0, 1}
 	};
 	eDuenio arrDuenio[TAMDUENIO]={
-			{30000, "AA", 10101010, 1},
-			{30001, "BB", 20202020, 1},
-			{30002, "CC", 30303030, 1}
+			{30000, "AA", 1140429405, 1},
+			{30001, "BB", 1520203253, 1},
+			{30002, "CC", 1185420352, 1}
 	};
 
 	int opcion;
@@ -79,6 +79,7 @@ int main(void) {
 			case 2:
 				if (cantidadEstadias>0)
 				{
+					estadia_mostrarTodas(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO);
 					estadia_subMenuModificarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO);
 				}
 				else
@@ -90,6 +91,7 @@ int main(void) {
 			case 3:
 				if (cantidadEstadias>0)
 				{
+					estadia_mostrarTodas(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO);
 					if (estadia_cancelarUna(arrEstadia, TAMESTADIA, arrPerro, TAMPERRO, arrDuenio, TAMDUENIO, TAMNOMBREPERRO, TAMNOMBREDUENIO)==0)
 					{
 						cantidadEstadias--;

@@ -46,26 +46,6 @@ int duenio_obtenerIdDesdeLista(eDuenio *_arrDuenio, int _tamDuenio)
 	return -1;
 }
 
-
-int duenio_obtenerIdDesdeIndex(eDuenio *_arrDuenio, int _tamDuenio, int _id)
-{
-	int id=-1;
-
-	if(_arrDuenio!=NULL)
-	{
-		for(int i=0; i<_tamDuenio; i++)
-		{
-			if(_arrDuenio[i].estado==1 && i==_id)
-			{
-				id=_id;
-				return id;
-			}
-		}
-	}
-	return id;
-}
-
-
 int duenio_buscarDesdeId(eDuenio *_arrDuenio, int _tamDuenio, int _id)
 {
 	int index =-1;
@@ -124,7 +104,7 @@ void duenio_mostrarUno(eDuenio _duenio)
 void duenio_mostrarTodos(eDuenio *_arrDuenio, int _tamDuenio)
 {
 	printLine("LISTA DE DUEÑOS");
-	printf("\n%-10s %-40s %-20s\n", "ID", "NOMBRE", "TELEFONO");
+	printf("\n%-10s %-20s %-20s\n", "ID", "NOMBRE", "TELEFONO");
 	if(_arrDuenio!=NULL)
 	{
 		for(int i=0; i<_tamDuenio; i++)

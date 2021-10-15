@@ -81,6 +81,8 @@ int getInt(char *_msg, char *_errMsg, int _min, int _max);
  */
 float getFloat(char *_msg, char *_errMsg, int _min, int _max);
 
+double getDouble(char *_msg, char *_errMsg, double _min, double _max);
+
 /**
  * @fn int getCharacter(char*, char*)
  * @brief this asks the user to enter a char and validates it
